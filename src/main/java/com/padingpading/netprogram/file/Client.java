@@ -1,7 +1,5 @@
 package com.padingpading.netprogram.file;
 
-import com.sun.deploy.panel.ITreeNode;
-import org.omg.PortableInterceptor.INACTIVE;
 
 import java.io.*;
 import java.net.Socket;

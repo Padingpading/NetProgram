@@ -13,7 +13,7 @@ import java.net.Socket;
  *              服务端每就收一个客户端socket请求对象之后都交给一个独立的线程来处理客户端的数据交互请求
  * @date 2021/6/23
  */
-public class Server {
+public class   Server {
     public static void main(String[] args) {
         try {
             //1、创建socket对象请求服务端的链接

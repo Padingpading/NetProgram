@@ -18,6 +18,7 @@ public class Server {
             //1、定义一个server socket 对象进行服务器端的端口注册
             ServerSocket serverSocket =new ServerSocket(9999);
             //2、监听客户端的socket链接请求,这里会被阻塞，需要等待client端的链接。三次握手。
+            //三次握手之后返回socket。
             Socket socket = serverSocket.accept();
             //3、从socket管道中得到一个字节输入流对象
             InputStream is = socket.getInputStream();
