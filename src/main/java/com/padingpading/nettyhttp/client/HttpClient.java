@@ -31,6 +31,7 @@ public class HttpClient {
             b.handler(new ChannelInitializer<SocketChannel>() {
                 @Override
                 public void initChannel(SocketChannel ch) throws Exception {
+                    //客户端请求编码和响应编码
                     ch.pipeline().addLast(new HttpClientCodec());
                     /*聚合http为一个完整的报文*/
                     ch.pipeline().addLast("aggregator",

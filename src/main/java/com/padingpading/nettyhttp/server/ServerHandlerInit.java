@@ -34,11 +34,13 @@ public class ServerHandlerInit extends ChannelInitializer<SocketChannel> {
         ph.addLast("decoder",new HttpRequestDecoder());
 
 
-        /*聚合http为一个完整的报文*/
+        //聚合http为一个完整的报文,讲对端传送的报文聚合成一个http报文。
+        //并且规定报文的最大值。
         ph.addLast("aggregator",
                 new HttpObjectAggregator(10*1024*1024));
-        /*把应答报文 压缩,非必要*/
+        //把应答报文 压缩,非必要
         ph.addLast("compressor",new HttpContentCompressor());
+        //
         ph.addLast(new BusiHandler());
 
 

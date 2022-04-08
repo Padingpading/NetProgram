@@ -15,7 +15,8 @@ import java.net.URI;
  * 类说明：
  */
 public class HttpClientInboundHandler extends ChannelInboundHandlerAdapter {
-
+    
+    @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         FullHttpResponse httpResponse = (FullHttpResponse)msg;
         System.out.println(httpResponse.status());
@@ -27,6 +28,7 @@ public class HttpClientInboundHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
+        //建立连接后发送请求。
         URI uri = new URI("/test");
         String msg = "Hello";
         DefaultFullHttpRequest request =
