@@ -14,7 +14,7 @@ import io.netty.handler.codec.DelimiterBasedFrameDecoder;
 import java.net.InetSocketAddress;
 
 /**
- * 作者：Mark/Maoke
+ * 作者：Mark
  * 创建日期：2018/08/25
  * 类说明：
  */
@@ -52,7 +52,12 @@ public class DelimiterEchoServer {
 
         @Override
         protected void initChannel(Channel ch) throws Exception {
-            //TODO
+            //解析客户端发送过来的数据。
+            ByteBuf delimiter = Unpooled.copiedBuffer(DELIMITER_SYMBOL.getBytes());
+            ch.pipeline().addLast(new DelimiterBasedFrameDecoder(1024,
+                    delimiter));
+            //业务handller
+            ch.pipeline().addLast(new DelimiterServerHandler());
         }
     }
 

@@ -10,7 +10,7 @@ import io.netty.util.CharsetUtil;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * 作者：Mark/Maoke
+ * 作者：Mark
  * 创建日期：2018/08/25
  * 类说明：自己的业务处理
  */

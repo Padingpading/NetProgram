@@ -12,7 +12,7 @@ import io.netty.handler.codec.LineBasedFrameDecoder;
 import java.net.InetSocketAddress;
 
 /**
- * 作者：Mark/Maoke
+ * 作者：Mark
  * 创建日期：2018/08/25
  * 类说明：
  */
@@ -49,7 +49,8 @@ public class LineBaseEchoServer {
 
         @Override
         protected void initChannel(Channel ch) throws Exception {
-            //TODO
+            ch.pipeline().addLast(new LineBasedFrameDecoder(1024));
+            ch.pipeline().addLast(new LineBaseServerHandler());
         }
     }
 

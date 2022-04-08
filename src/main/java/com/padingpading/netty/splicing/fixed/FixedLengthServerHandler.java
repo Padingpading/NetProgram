@@ -1,5 +1,6 @@
 package com.padingpading.netty.splicing.fixed;
 
+import cn.enjoyedu.nettybasic.splicing.delimiter.DelimiterEchoServer;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandler;
@@ -10,7 +11,7 @@ import io.netty.util.CharsetUtil;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * 作者：Mark/Maoke
+ * 作者：Mark
  * 创建日期：2018/08/25
  * 类说明：自己的业务处理
  */
@@ -22,7 +23,12 @@ public class FixedLengthServerHandler extends ChannelInboundHandlerAdapter {
     /*** 服务端读取到网络数据后的处理*/
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        //TODO
+        ByteBuf in = (ByteBuf) msg;
+        String request = in.toString(CharsetUtil.UTF_8);
+        System.out.println("Server Accept["+request
+                +"] and the counter is:"+counter.incrementAndGet());
+        ctx.writeAndFlush(Unpooled.copiedBuffer(
+                FixedLengthEchoServer.RESPONSE.getBytes()));
     }
 
     /*** 发生异常后的处理*/

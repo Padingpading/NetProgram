@@ -11,7 +11,7 @@ import io.netty.util.CharsetUtil;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * 作者：Mark/Maoke
+ * 作者：Mark
  * 创建日期：2018/08/25
  * 类说明：自己的业务处理
  */
@@ -23,7 +23,13 @@ public class DelimiterServerHandler extends ChannelInboundHandlerAdapter {
     /*** 服务端读取到网络数据后的处理*/
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        //TODO
+        ByteBuf in = (ByteBuf) msg;
+        String request = in.toString(CharsetUtil.UTF_8);
+        System.out.println("Server Accept["+request
+                +"] and the counter is:"+counter.incrementAndGet());
+        String resp = "Hello,"+request+". Welcome to Netty World!"
+                + DelimiterEchoServer.DELIMITER_SYMBOL;
+        ctx.writeAndFlush(Unpooled.copiedBuffer(resp.getBytes()));
     }
 
     /*** 服务端读取完成网络数据后的处理*/
