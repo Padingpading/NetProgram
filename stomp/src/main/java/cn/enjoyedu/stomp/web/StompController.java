@@ -22,6 +22,7 @@ public class StompController {
 
     /*消息群发，接受发送至自massRequest的请求*/
     @MessageMapping("/massRequest")
+    //发送给客户端的接口。
     @SendTo("/mass/getResponse")
     public ChatRoomResponse mass(ChatRoomRequest chatRoomRequest){
         System.out.println("name = " + chatRoomRequest.getName());
@@ -41,6 +42,7 @@ public class StompController {
         ChatRoomResponse response=new ChatRoomResponse();
         response.setName(chatRoomRequest.getName());
         response.setChatValue(chatRoomRequest.getChatValue());
+        //发送给具体某个人。
         this.template.convertAndSendToUser(chatRoomRequest.getUserId()+"",
                 "/alone",response);
         return response;
