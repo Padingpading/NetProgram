@@ -27,12 +27,18 @@ public class LogEventEncoder extends MessageToMessageEncoder<LogMsg> {
     @Override
     protected void encode(ChannelHandlerContext channelHandlerContext,
                           LogMsg logMsg, List<Object> out) throws Exception {
+        //将消息提转换为udp报文 DatagramPacket
         byte[] bytes = logMsg.getMsg().getBytes(CharsetUtil.UTF_8);
         ByteBuf buf = channelHandlerContext.alloc().buffer(
+                //buffer的长度。
                 8*2+bytes.length+1);
+        //8
         buf.writeLong(logMsg.getTime());
+        //8
         buf.writeLong(logMsg.getMsgId());
+        //1
         buf.writeByte(LogMsg.SEPARATOR);
+        //bytelength
         buf.writeBytes(bytes);
         out.add(new DatagramPacket(buf,remoteAddress));
 

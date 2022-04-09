@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.padingpading</groupId>
-    <artifactId>NetProgram</artifactId>
+    <artifactId>netprogram</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>netprogram</name>
     <description>NetProgram</description>
@@ -44,6 +44,7 @@
         <version>0.6.12</version>
     </dependency>
     </dependencies>
+
     <build>
         <plugins>
             <plugin>

@@ -1,6 +1,6 @@
 package com.padingpading.netty.udp.broadcast.acceptside;
 
-import cn.enjoyedu.udp.broadcast.LogMsg;
+import com.padingpading.netty.udp.broadcast.LogMsg;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 
@@ -9,6 +9,7 @@ import io.netty.channel.SimpleChannelInboundHandler;
  * 往期课程和VIP课程咨询 依娜老师  QQ：2133576719
  * 类说明：日志的业务处理类,实际的业务处理，接受日志信息
  */
+//继承SimpleChannelInboundHandler 资源的释放。
 public class LogEventHandler
     extends SimpleChannelInboundHandler<LogMsg> {
 

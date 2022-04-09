@@ -20,6 +20,7 @@ public class LogEventDecoder extends MessageToMessageDecoder<DatagramPacket> {
     protected void decode(ChannelHandlerContext ctx,
                           DatagramPacket datagramPacket, List<Object> out)
         throws Exception {
+        //传过来的数据。
         ByteBuf data = datagramPacket.content();
         //获得发送时间
         long sendTime = data.readLong();

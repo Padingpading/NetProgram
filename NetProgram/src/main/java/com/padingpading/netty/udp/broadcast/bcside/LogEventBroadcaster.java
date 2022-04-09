@@ -53,9 +53,9 @@ public class LogEventBroadcaster {
     }
 
     public static void main(String[] args) throws Exception {
-
         //创建并启动一个新的 UdpQuestionSide 的实例
         LogEventBroadcaster broadcaster = new LogEventBroadcaster(
+                //广播地址,加端口。
                 new InetSocketAddress("255.255.255.255",
                         LogConst.MONITOR_SIDE_PORT)
         );

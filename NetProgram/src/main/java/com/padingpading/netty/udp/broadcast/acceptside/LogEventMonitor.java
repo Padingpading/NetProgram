@@ -25,7 +25,7 @@ public class LogEventMonitor {
             .channel(NioDatagramChannel.class)
             //设置套接字选项 SO_BROADCAST
             .option(ChannelOption.SO_BROADCAST, true)
-
+            //端口重用,多个应用监听同一个端口。
             .option(ChannelOption.SO_REUSEADDR, true)
 
             .handler( new ChannelInitializer<Channel>() {
@@ -48,7 +48,10 @@ public class LogEventMonitor {
     public void stop() {
         group.shutdownGracefully();
     }
-
+    
+    /**
+     * 只要对广播端进行一个监听,就会发送。
+     */
     public static void main(String[] args) throws Exception {
         //构造一个新的 UdpAnswerSide并指明监听端口
         LogEventMonitor monitor = new LogEventMonitor(
@@ -63,3 +66,4 @@ public class LogEventMonitor {
         }
     }
 }
+
